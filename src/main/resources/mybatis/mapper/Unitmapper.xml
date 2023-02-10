@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.studyweb.mapper.Unitmapper">
+    <select id="FindbyId" parameterType="String" resultType="Unit">
+        select * from tableunit where id=#{id}
+    </select>
+    <select id="FindbyIdFinish" parameterType="String" resultType="Unit">
+        select * from tableunit where id=#{id} and finishstate=1
+    </select>
+    <select id="FindbyIdUnfinish" parameterType="String" resultType="Unit">
+        select * from tableunit where id=#{id} and finishstate=0
+    </select>
+    <update id="Update" parameterType="String">
+        update tableunit set finishstate=1 where unit=#{unitname}
+    </update>
+<update id="Updatenum">
+    update tableunit set finishpoint=#{param1} where id=#{param2} and unit=#{param3}
+</update>
+</mapper>

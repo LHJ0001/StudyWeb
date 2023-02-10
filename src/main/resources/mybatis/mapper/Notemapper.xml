@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+        <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+                "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.studyweb.mapper.Notemapper">
+<select id="FindbyId" parameterType="String" resultType="Note">
+    select * from tablenote where id=#{id}
+</select>
+<select id="FindbyNotetitle" parameterType="String" resultType="Note">
+    select * from tablenote where notetitle=#{notetitle}
+</select>
+    <insert id="AddNote" parameterType="Note">
+        insert into tablenote values(#{notetitle},#{unit},#{time},#{content},#{id},#{abstract1})
+    </insert>
+</mapper>

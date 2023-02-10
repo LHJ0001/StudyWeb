@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javaStudy</title>
+    <!--fivicon icon-->
+    <link rel="icon" th:href="@{/geshi/img/fevicon.png}">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" th:href="@{/geshi/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/magnific.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/nice-select.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/owl.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/slick-slide.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/fontawesome.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/style.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/responsive.css}">
+    <link rel="stylesheet" href="/geshi/css/fontawesome.css">
+    <link rel="stylesheet" href="/geshi/css/themify-icons.css">
+    <link rel="stylesheet" href="/geshi/css/magnific-popup.css">
+    <link rel="stylesheet" href="/geshi/css/metismenu.css">
+    <link rel="stylesheet" href="/geshi/css/nice-select.css">
+    <link rel="stylesheet" href="/geshi/css/jquery-ui.css">
+    <link rel="stylesheet" href="/geshi/css/common.css">
+
+
+    <link rel="stylesheet" th:href="@{/geshi/tujian/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/tujian/css/fontawesome.css}">
+    <link rel="stylesheet" th:href="@{/geshi/tujian/css/themify-icons.css}">
+    <link rel="stylesheet" th:href="@{/geshi/tujian/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/tujian/css/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/tujian/css/magnific-popup.css}">
+    <link rel="stylesheet" th:href="@{/geshi/tujian/css/metismenu.css}">
+    <link rel="stylesheet" th:href="@{/geshi/tujian/css/nice-select.css}">
+    <link rel="stylesheet" th:href="@{/geshi/tujian/css/jquery-ui.css}">
+    <link rel="stylesheet" th:href="@{/geshi/tujian/css/common.css}">
+    <link rel="stylesheet" th:href="@{/geshi/tujian/css/style.css}">
+    <link rel="stylesheet" th:href="@{/geshi/tujian/css/responsive.css}">
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+</head>
+<body class='sc5'>
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div id="wave1">
+            </div>
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <div class="body-overlay" id="body-overlay"></div>
+
+    <!-- search popup area start -->
+    <div class="search-popup" id="search-popup">
+        <form action="home.html" class="search-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search.....">
+            </div>
+            <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <!-- //. search Popup -->
+
+    <section class="admin-dashboard-section">
+        <div class="admin-dashboard-right-side">
+            <!-- top header start  -->
+            <div class="main-header">
+                <div class="header-wraper">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <span class="header-user">
+                                <a href="#"><img th:src="@{/geshi/img/author/02.png}" alt="img"></a>
+                                <span>欢迎回来,
+                                    <h5><span th:text="${session.user.getUsername()}"></span></h5>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="col-xl-6 align-self-center text-lg-end">
+                            <div class="d-lg-flex align-items-center">
+                                <div class="user-rating text-center d-inline-block">
+                                    <span class="d-block">
+                                        <h5 style="color: white;" th:text="|学习评分 ${user.getLearnrate()}|">学习评级:4.5</h5>
+                                    </span>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- top header end  -->
+
+            <!-- dashboard-area start  -->
+            <div class="dashboard-profile-area">
+                <h3 class="dashboard-title"><strong>内容</strong></h3>
+                <div>
+                    <h4 th:text="${knowledge.getKnowtitle()}"><strong>这是内容的标题</strong></h4>
+                    <pre style="overflow-x: hidden;word-wrap: break-word;white-space: pre-wrap;" >
+                    <p th:text="${knowledge.getContent()}" style="width: 100%">
+                    </p>
+                    </pre>
+                </div>
+                <h4>CODE</h4>
+                <p style="background-color:lightblue;border-radius: 5px;">
+                   <pre style="background-color: lightblue">
+                    <code style="color: black;margin-left: 20px;" th:text="${knowledge.getCode()}">
+                        dfg
+                        sfdgdf
+                        hfdhggfd
+                        hdf
+                    </code>
+                   </pre>
+                </p>
+                <a th:href="@{/finishknowledge(title=${knowledge.getKnowtitle()},id=${knowledge.getId()},unit=${knowledge.getUnit()},tag=${knowledge.getTag()})}"><button class="btn btn-primary">完成</button></a>
+                <section class="courses_cat_area pt-110 pb-120">
+                    <div class="container">
+                        <div class="row align-items-center mb-25">
+                            <div class="col-lg-8 col-md-8">
+                                <div class="sec_title">
+                                    <h3><strong>相关推荐</strong> </h3>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row g-0">
+                            <div th:each="knowledge1,state:${knowledgeList1}" class="col-lg-3 col-md-6" >
+                                <div class="ct_single"style="box-shadow: 2px 2px 2px rgba(0,0,0,0.2);padding: 20px;background-color: #0071dc;border-radius: 20px;">
+                                    <div class="ser_thumb mb-25">
+                                        <img src="/static/picture/s_01.png" alt="">
+                                    </div>
+                                    <a th:href="@{knowledgeload(knowtitle=${knowledge1.getKnowtitle()},id=${knowledge1.getId()})}"><h4 style="color: white;font-weight: bolder" th:text="${knowledge1.getKnowtitle()}">Computer Science</h4></a>
+                                    <p style="color: white;font-weight: bolder" th:text="${knowledge1.getUnit()}">Rorem ipsum dolor sit amet</p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </section>
+        </div>
+        <!-- dashboard-left-menu start  -->
+        <div class="dashboard-left-menu">
+            <a href="" class="logo"><img th:src="@{/geshi/img/logo.png}" alt="img"></a>
+            <ul>
+                <li class="nav-item">
+                    <a class="dashboard-item-menu"  href="dashboard"><i class="fas fa-tachometer-alt"></i>我的课程</a>
+                </li>
+                <li class="nav-item">
+                    <a class="dashboard-item-menu"  th:href="@{dashboard-profileload(id=${session.user.getId()})}"><i class="fa fa-user"></i> 我的账户</a>
+                </li>
+                <li class="nav-item">
+                    <a class="dashboard-item-menu"  th:href="@{dashboard-all(id=${session.user.getId()})}"><i class="fas fa-graduation-cap"></i>所有课程</a>
+                </li>
+                <li class="nav-item">
+                    <a class="dashboard-item-menu"  th:href="@{mytest(id=${session.user.getId()})}"><i class="fab fa-buffer"></i>我的测试</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="dashboard-item-menu"  th:href="@{noteload(id=${session.user.getId()})}"><i class="fas fa-book"></i>笔记</a>
+                </li>
+                <li class="nav-item">
+                    <a class="dashboard-item-menu"  th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>退出登录</a>
+                </li>
+            </ul>
+        </div>
+    </section> 
+
+    <!-- back-to-top end -->
+    <div class="back-to-top">
+        <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
+    </div>
+
+    
+
+    <!-- all plugins here -->
+    <script th:src="@{/geshi/js/jquery.3.6.min.js}"></script>
+    <script th:src="@{/geshi/js/bootstrap.min.js}"></script>
+    <script th:src="@{/geshi/js/imageloded.min.js}"></script>
+    <script th:src="@{/geshi/js/counterup.js}"></script>
+    <script th:src="@{/geshi/js/waypoint.js}"></script>
+    <script th:src="@{/geshi/js/magnific.min.js}"></script>
+    <script th:src="@{/geshi/js/isotope.pkgd.min.js}"></script>
+    <script th:src="@{/geshi/js/nice-select.min.js}"></script>
+    <script th:src="@{/geshi/js/fontawesome.min.js}"></script>
+    <script th:src="@{/geshi/js/ripple.js}"></script>
+    <script th:src="@{/geshi/js/owl.min.js}"></script>
+    <script th:src="@{/geshi/js/slick-slider.min.js}"></script>
+    <script th:src="@{/geshi/js/wow.min.js}"></script>
+    <!-- main js  -->
+    <script th:src="@{/geshi/js/main.js}"></script>
+</body>
+</html>

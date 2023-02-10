@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Head -->
+<head>
+
+    <title>TIP</title>
+
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //Meta-Tags -->
+
+    <link rel="stylesheet" th:href="@{/geshi/tip/css/font-awesome.min.css}" media="all" />
+
+    <!-- Style --> <link rel="stylesheet" th:href="@{/geshi/tip/css/style.css}" type="text/css" media="all">
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+    <!-- //Fonts -->
+
+</head>
+<!-- //Head -->
+
+<!-- Body -->
+<body>
+
+<h1 ><span th:text="${session.user.getUsername()}">用户名</span><span th:text="${unit}"></span>考试即将开始</h1>
+<div class="w3layout-agileits">
+
+    <h3>如果你准备好了，请点击下方按钮</h3>
+
+    <a th:href="@{testchoose}"><i class="fa fa-angle-double-left" aria-hidden="true"></i>开始考试</a>
+</div>
+
+</body>
+<!-- //Body -->
+
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.studyweb.mapper.Knowledgemapper">
+   <select id="FindbyBoth" parameterType="String" resultType="Knowledge">
+       select * from tableknowledge where id=#{id} and unit=#{unitname}
+   </select>
+    <select id="FindbyTitle" parameterType="String" resultType="Knowledge">
+        select * from tableknowledge where knowtitle=#{knowtitle} and id=#{id}
+    </select>
+    <update id="Updata" parameterType="String">
+        update tableknowledge set knowstate=1 where id=#{id} and knowtitle=#{knowtitle}
+    </update>
+    <select id="Findbytag" resultType="Knowledge">
+        select * from tableknowledge where id=#{param1} and tag=#{param2}
+    </select>
+</mapper>

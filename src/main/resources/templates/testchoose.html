@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+<meta charset="UTF-8">
+<title>试卷页面</title>
+<link rel="stylesheet" type="text/css" th:href="@{http://www.jq22.com/jquery/bootstrap-3.3.4.css}">
+<link th:href="@{/geshi/testall/css/index.css}" rel="stylesheet" type="text/css"/>
+<script th:src="@{http://www.jq22.com/jquery/jquery-1.10.2.js}"></script>
+<script th:src="@{http://www.jq22.com/jquery/bootstrap-3.3.4.js}"></script>
+
+</head>
+<body>
+<div>
+  <div class="col-md-1"></div>
+  <div class="col-md-10">
+    <div class="content">
+      <div class="row">
+        <div class="btn-group">
+          <a th:href="@{testchoose}"><button class="btn btn-default" type="button" >选择题</button></a>
+          <a th:href="@{testjudge}"><button class="btn btn-default" type="button" >判断题</button></a>
+          <a th:href="@{testcode}"><button class="btn btn-default" type="button" >编程题</button></a>
+          <a th:href="@{testfill}"><button class="btn btn-default" type="button" >简答题</button></a>
+        </div>
+      </div>
+     
+      <div style="width: 100%;height:auto;display: inline-block;border: 1px solid white;position: relative;margin-top:10px;">
+        <div style="width: 100%;">
+          <div style="width: 80%;margin: 0px auto">
+            <div style="width: 100%;height:100px;border: 1px solid #CCC;border-bottom:none;background:#FFF;">
+              
+              <div style="width: 100%;height: 50px;font-size:15px;color: #000;line-height: 50px;padding-left: 20px;">
+                
+                [单选题] </div>
+            </div>
+            <div style="width: 100%;height:auto;display: inline-block;border: 1px solid #CCC;border-bottom:1px dashed #CCC;background:#FFF;">
+              <div style="width: 100%;height: 90%;padding:20px 20px 0px 20px;"> 
+                <!--试题区域-->
+                <form th:action="@{/testchoosepost}" th:method="post">
+                <div>
+                <ul class="list-unstyled question" id="question0" name="">
+                  <li class="question_title"><strong ><span th:text="|第${num}题|">第 1 题 </span><span th:text="|共${total}题|"></span></strong><input style=" border:0;webkit-box-shadow:none;box-shadow:none;width: 800px;" type="text" class="showbig" th:name="titlec" th:value="${testChoose.getCtitle()}"  readonly= "true "> </li>
+                  <li class="question_info"  id="item0">
+                    <input type="radio" th:name="item" value="a">&nbsp;<span th:text="${testChoose.getChoosea()}"></span></li>
+                  <li class="question_info"  id="item1">
+                    <input type="radio" th:name="item" value="b">&nbsp;<span th:text="${testChoose.getChooseb()}"></span></li>
+                  <li class="question_info"  id="item2">
+                    <input type="radio" th:name="item" value="c">&nbsp;<span th:text="${testChoose.getChoosec()}"></span></li>
+                  <li class="question_info"  id="item3">
+                    <input type="radio" th:name="item" value="d">&nbsp;<span th:text="${testChoose.getChoosed()}"></span></li>
+                  <li class="question_info"  id="item4">
+                </ul>
+                <div>
+                <!--考题的操作区域-->
+                <div class="operation" style="margin-top: 20px;">
+                  <div class="text-right" style="margin-right: 20px;">
+                    <div class="form-group" style="color: #FFF;">
+                      <button class="btn btn-info" th:type="summit" id="nextQuestion">提交/下一题</button>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+                </div>
+                </form>
+                <div class="operation" style="margin-top: 20px;">
+                  <div class="text-right" style="margin-right: 20px;">
+                    <div class="form-group" style="color: #FFF;">
+                      <a th:href="@{setanswer}"><button class="btn btn-success" id="submitQuestions">提交试卷</button></a>
+                    </div>
+                  </div>
+                </div>
+                <div>
+                  <p style="color: red" th:text="${msg}" th:if="${not #strings.isEmpty(msg)}"></p>
+                </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-md-1"></div>
+</div>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="zxx" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>javaStudy</title>
+    <!--fivicon icon-->
+    <link rel="icon" href="/geshi/img/fevicon.png">
+
+    <link rel="icon" th:href="@{/geshi/img/fevicon.png}">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" th:href="@{/geshi/css/animate.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/magnific.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/nice-select.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/owl.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/slick-slide.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/fontawesome.min.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/style.css}">
+    <link rel="stylesheet" th:href="@{/geshi/css/responsive.css}">
+
+    <link rel="stylesheet" th:href="@{/geshi/note/css/bootstrap.min.css}" />
+    <link rel="stylesheet" th:href="@{/geshi/note/css/font-icons.css}" />
+    <link rel="stylesheet" th:href="@{/geshi/note/css/style.css}" />
+
+  <!-- Lazyload -->
+  <script th:src="@{/geshi/note/js/lazysizes.min.js}"></script>
+
+    <!--Google Fonts-->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+
+</head>
+<body class='sc5'>
+    <!-- preloader area start -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div id="wave1">
+            </div>
+            <div class="spinner">
+                <div class="dot1"></div>
+                <div class="dot2"></div>
+            </div>
+        </div>
+    </div>
+    <!-- preloader area end -->
+    <div class="body-overlay" id="body-overlay"></div>
+
+    <!-- search popup area start -->
+    <div class="search-popup" id="search-popup">
+        <form action="home.html" class="search-form">
+            <div class="form-group">
+                <input type="text" class="form-control" placeholder="Search.....">
+            </div>
+            <button type="submit" class="submit-btn"><i class="fa fa-search"></i></button>
+        </form>
+    </div>
+    <!-- //. search Popup -->
+
+    <section class="admin-dashboard-section">
+        <div class="admin-dashboard-right-side">
+            <!-- top header start  -->
+            <div class="main-header">
+                <div class="header-wraper">
+                    <div class="row">
+                        <div class="col-xl-6">
+                            <span class="header-user">
+                                <a href="#"><img th:src="@{/geshi/img/author/02.png}" alt="img"></a>
+                                <span>欢迎回来,
+                                    <h5><span th:text="${session.user.getUsername()}"></span></h5>
+                                </span>
+                            </span>
+                        </div>
+                        <div class="col-xl-6 align-self-center text-lg-end">
+                            <div class="d-lg-flex align-items-center">
+                                <div class="user-rating text-center d-inline-block">
+                                    <span class="d-block">
+                                        <h5 style="color: white;" >写下你的感想吧！</h5>
+                                    </span>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- top header end  -->
+
+            <!-- dashboard-area start  -->
+            <div class="dashboard-profile-area">
+                <section class="section">
+                    <div class="title-wrap">
+                      <h3 class="section-title">我的笔记</h3>
+                      <a href="writenote" class="all-posts-url">创建新笔记</a>
+                    </div>
+
+                    <article class="entry post-list" th:each="note:${notelist}">
+                      <div class="entry__img-holder post-list__img-holder">
+                        <a href="single-post.html">
+                          <div class="thumb-container thumb-75">
+                            <img data-src="/geshi/note/img/blog/list_post_img_1.png" src="/geshi/note/img/empty.png" class="entry__img lazyload" alt="">
+                          </div>
+                        </a>
+                      </div>
+        
+                      <div class="entry__body post-list__body">
+                        <div class="entry__header">
+                          <a href="#" class="entry__meta-category" >
+                              <p class="entry__meta-category" th:text="${note.unit}"></p>
+                          </a>
+                            <a th:href="@{notedetailload(notetitle=${note.notetitle})}"><h2 class="entry__title" th:text="${note.notetitle}"></h2></a>
+                            <ul class="entry__meta">
+                                    <li class="entry__meta-author">
+                                        <i class="ui-author"></i>
+                                        <a href="#" ><p th:text="${session.user.username}"></p></a>
+                                    </li>
+
+                                    <li class="entry__meta-date">
+                                        <i class="ui-date"></i>
+                                        <a>
+                                            <p th:text="${note.time}"></p>
+                                        </a>
+                                    </li>
+                            </ul>
+                        </div>
+                          <div class="entry__excerpt">
+                              <p th:text="${note.abstract1}">Point of Sale hardware, the till at a shop check out, has become very complex over the past ten years. Modern POS hardware includes the cash till, bar-code readers...</p>
+                          </div>
+                      </div>
+                    </article>
+
+        
+
+        
+                  </section> <!-- end latest news -->
+            </div>
+        </div>
+        <!-- dashboard-left-menu start  -->
+        <div class="dashboard-left-menu">
+            <a href="" class="logo"><img th:src="@{/geshi/img/logo.png}" alt="img"></a>
+            <ul>
+                <li class="nav-item">
+                    <a class="dashboard-item-menu"  href="dashboard"><i class="fas fa-tachometer-alt"></i>我的课程</a>
+                </li>
+                <li class="nav-item">
+                    <a class="dashboard-item-menu"  th:href="@{dashboard-profileload(id=${session.user.getId()})}"><i class="fa fa-user"></i> 我的账户</a>
+                </li>
+                <li class="nav-item">
+                    <a class="dashboard-item-menu"  th:href="@{dashboard-all(id=${session.user.getId()})}"><i class="fas fa-graduation-cap"></i>所有课程</a>
+                </li>
+                <li class="nav-item">
+                    <a class="dashboard-item-menu"  th:href="@{mytest(id=${session.user.getId()})}"><i class="fab fa-buffer"></i>我的测试</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="dashboard-item-menu"  th:href="@{noteload(id=${session.user.getId()})}"><i class="fas fa-book"></i>笔记</a>
+                </li>
+                <li class="nav-item">
+                    <a class="dashboard-item-menu"  th:href="@{/logout}"><i class="fas fa-sign-out-alt"></i>退出登录</a>
+                </li>
+            </ul>
+        </div>
+    </section> 
+
+    <!-- back-to-top end -->
+    <div class="back-to-top">
+        <span class="back-top"><i class="fas fa-angle-double-up"></i></span>
+    </div>
+
+    
+
+    <!-- all plugins here -->
+    <script th:src="@{/geshi/js/jquery.3.6.min.js}"></script>
+    <script th:src="@{/geshi/js/bootstrap.min.js}"></script>
+    <script th:src="@{/geshi/js/imageloded.min.js}"></script>
+    <script th:src="@{/geshi/js/counterup.js}"></script>
+    <script th:src="@{/geshi/js/waypoint.js}"></script>
+    <script th:src="@{/geshi/js/magnific.min.js}"></script>
+    <script th:src="@{/geshi/js/isotope.pkgd.min.js}"></script>
+    <script th:src="@{/geshi/js/nice-select.min.js}"></script>
+    <script th:src="@{/geshi/js/fontawesome.min.js}"></script>
+    <script th:src="@{/geshi/js/ripple.js}"></script>
+    <script th:src="@{/geshi/js/owl.min.js}"></script>
+    <script th:src="@{/geshi/js/slick-slider.min.js}"></script>
+    <script th:src="@{/geshi/js/wow.min.js}"></script>
+    <!-- main js  -->
+    <script th:src="@{/geshi/js/main.js}"></script>
+</body>
+</html>

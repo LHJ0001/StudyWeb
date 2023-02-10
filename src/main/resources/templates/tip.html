@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<!-- Head -->
+<head>
+
+    <title>TIP</title>
+
+    <!-- Meta-Tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="">
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- //Meta-Tags -->
+
+    <link rel="stylesheet" th:href="@{/geshi/tip/css/font-awesome.min.css}" media="all" />
+
+    <!-- Style --> <link rel="stylesheet" th:href="@{/geshi/tip/css/style.css}" type="text/css" media="all">
+
+    <!-- Fonts -->
+    <link href="http://fonts.googleapis.com/css?family=Quicksand:300,400,500,700" rel="stylesheet">
+    <!-- //Fonts -->
+
+</head>
+<!-- //Head -->
+
+<!-- Body -->
+<body>
+
+<h1>你的 <span>依赖知识</span>没学完，所以不能学习这个知识点</h1>
+<div class="w3layout-agileits">
+
+    <h3>请确保完成以下知识点：</h3>
+    <div th:each="rely,state:${relyList}">
+    <p th:text="${rely.getRely()}">Something went wrong</p>
+    </div>
+    <a th:href="@{dashboard}"><i class="fa fa-angle-double-left" aria-hidden="true"></i>返回主页</a>
+</div>
+
+</body>
+<!-- //Body -->
+
+</html>
